@@ -1,2 +1,2 @@
 # bash_scripts
-Bash scripts mostly for learning purposes.
+Repo consists of different bash scripts mostly for learning purposes.
