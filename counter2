@@ -1,0 +1,5 @@
+#!/bin/bash
+# -p prompt, you dont need to use echo
+read -p "Enter something > "
+
+echo "REPLY= '$REPLY'"

@@ -1,0 +1,14 @@
+#!/bin/bash
+# -s secret
+# -p prompt
+# -t time 15 sec.
+# echo -e enalble interpret of backslashes
+# >&2 -redirect stout to stderr
+
+if read -t 15 -sp "Enter secret password --> " s_pass; then
+    echo -e "\nSecret pass = '$s_pass'"
+else  
+	echo -e "\nInput timed out" >&2
+	exit 1
+fi
+   

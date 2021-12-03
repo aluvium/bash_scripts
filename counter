@@ -1,0 +1,6 @@
+#!/bin/bash
+# -n - do not output the trailing newline
+echo -n "Enter one or more values > "
+read 
+
+echo "REPLY= '$REPLY'"
