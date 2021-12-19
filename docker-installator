@@ -1,0 +1,57 @@
+#!/bin/bash
+# Program with menu
+
+DELAY=3
+
+while [[ "$REPLY" != 0  ]]; do
+    clear
+    echo "
+DOCKER INSTALLATOR
+
+	==========================================
+
+	1. Docker 
+	2. Docker Compose
+	3. Docker Swarm
+	0. Exit
+
+	==========================================
+    
+	"
+
+    read -p "Please select what do you want to install, press  0-3 and Enter: "
+
+    if [[ $REPLY =~ ^[0-3]$ ]]; then
+		
+    if [[ $REPLY == 1 ]]; then
+        echo "Installing Docker"
+        sudo apt-get update -y
+	cat /etc/os-release | grep VERSION_CODENAME
+	archdetect
+        echo -e "\nCompleted succesfully."
+        sleep "$DELAY"
+        continue
+    fi	
+				
+    if [[ $REPLY == 2 ]]; then
+        echo "Installing Docker-Compose"
+        sudo apt-get update -y
+        echo -e "\nCompleted succesfully."
+        sleep "$DELAY"
+        continue
+    fi
+    if [[ $REPLY == 3 ]]; then
+        echo "Installing Docker Swarm"
+	sudo apt-get update -y
+	echo -e "\nCompleted sucessfully."
+        sleep "$DELAY"
+        continue
+    fi
+    else
+        echo "Invalid input."
+        sleep "$DELAY"
+    fi
+
+done
+echo -e  "\nProgram terminated."
+
