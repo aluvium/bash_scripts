@@ -24,11 +24,24 @@ DOCKER INSTALLATOR
     if [[ $REPLY =~ ^[0-3]$ ]]; then
 		
     if [[ $REPLY == 1 ]]; then
-        echo "Installing Docker"
+        echo "Installing Docker..."
+	echo "Updating system... "
         sudo apt-get update -y
-	cat /etc/os-release | grep VERSION_CODENAME
-	archdetect
-        echo -e "\nCompleted succesfully."
+	echo -e "\nDownloading and adding docker public key"
+
+        wget -O docker.gpg https://download.docker.com/linux/debian/gpg
+	sudo apt-key add docker.gpg
+	
+	echo -e "\nAdding repository"
+        echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu/ $(lsb_release -cs) stable" \
+	|  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+#	cat /etc/os-release | grep VERSION_CODENAME | cut -d "=" -f 2 <== same as lsb_release -cs
+        echo "Installing Docker"
+	sudo apt-get update -y
+	sudo apt-get install docker-ce -y
+	echo -e "\nCompleted succesfully."
+        docker --version
         sleep "$DELAY"
         continue
     fi	
